@@ -53,6 +53,14 @@ Camadas internas não conhecem camadas externas.
   memória nesta fase inicial.
 - Não utilize provedores de armazenamento externos ou serviços de upload de
   terceiros. O armazenamento é estritamente local à aplicação.
+- O storage deve ter permissões restritas e nomes internos gerados pelo servidor.
+- O upload deve limitar tamanho por arquivo, tamanho total armazenado, taxa por
+  IP, concorrência e partes multipart.
+- `X-User-Id` é somente um identificador de desenvolvimento. Em produção, o
+  proprietário deve vir de `req.user.id` preenchido por middleware de autenticação.
+- Configurações: `PORT` (3000), `STORAGE_DIR` (`backend/storage`),
+  `MAX_FILE_SIZE_BYTES` (10 MiB), `MAX_STORAGE_BYTES` (1 GiB),
+  `MAX_UPLOADS_PER_MINUTE` (30) e `MAX_CONCURRENT_UPLOADS` (4).
 
 ## Convenções do frontend
 
