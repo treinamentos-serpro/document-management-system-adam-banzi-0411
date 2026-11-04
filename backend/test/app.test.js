@@ -76,7 +76,10 @@ test('upload, listagem, isolamento e download funcionam com storage privado', as
 
   const ownerList = await fetch(`${baseUrl}/documents`, { headers: { 'X-User-Id': 'user-a' } });
   assert.equal(ownerList.status, 200);
-  assert.equal((await ownerList.json()).length, 1);
+  const ownerDocuments = await ownerList.json();
+  assert.equal(ownerDocuments.length, 1);
+  assert.equal(ownerDocuments[0].id, document.id);
+  assert.equal(ownerDocuments[0].originalName, document.originalName);
 
   const otherUserList = await fetch(`${baseUrl}/documents`, { headers: { 'X-User-Id': 'user-b' } });
   assert.deepEqual(await otherUserList.json(), []);
