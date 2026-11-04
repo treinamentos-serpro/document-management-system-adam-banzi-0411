@@ -1,9 +1,9 @@
 const path = require('node:path');
 const express = require('express');
-const { createDocumentRepository } = require('./repositories/documentRepository');
-const { createDocumentService } = require('./services/documentService');
-const { createDocumentController } = require('./controllers/documentController');
-const { createDocumentRouter } = require('./routes/documentRoutes');
+const { createDocumentRepository } = require('./repositories/documents.repository');
+const { createDocumentService } = require('./services/documents.service');
+const { createDocumentController } = require('./controllers/documents.controller');
+const { createDocumentRouter } = require('./routes/documents.routes');
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
